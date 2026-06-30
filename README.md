@@ -22,12 +22,17 @@ A responsive food ordering web application with a Vanilla JS frontend and Node.j
  ## Run locally ##
 
  cd Backend
+
+ 
 npm install
 npm start
 
 
 cd Frontend 
+
+
 #open index.html in browser  and use live server 
 
 👤 Author 
+
 Mariam Malik 
