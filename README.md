@@ -1,17 +1,17 @@
 ## Bite swift Food ordering website ## 
 
-A responsive food ordering web application with a Vanilla JS frontend and Node.js backend. The project includes user flows, admin panel, cart management, and a basic server setup.
+A responsive food ordering web application by using html,css,JS frontend and Node.js backend. The project includes user flows, admin panel, cart management, and a basic server setup.
 
 
 ✨ Features
 **Frontend**
-- **User**: Menu, Products, Gallery, Cart, Checkout, Table Booking `book.html`
-- **Admin**: Login, Signup, Dashboard, Admin Panel `admin.html`, `dashboard.html`
-- **Cart**: Add, remove, update items with dynamic total `fix_cart.js`
+- **User**: Menu, Products, Gallery, Cart, Checkout, Table Booking 
+- **Admin**: Login, Signup, Admin Dashboard ,Add produxt ,update and delete feature 
+- **Cart**: Add, remove, update items with dynamic total 
 - **UI**: Mobile-first responsive design with custom CSS
 
 **Backend**
-- **Server**: Node.js + Express `server.js`
+- **Server**: Node.js + Express 
 - **API Base**: RESTful endpoints for future menu, cart, and auth logic
 
 📚 Tech Stack
