@@ -25,6 +25,7 @@ A responsive food ordering web application with a Vanilla JS frontend and Node.j
 
  
 npm install
+
 npm start
 
 
