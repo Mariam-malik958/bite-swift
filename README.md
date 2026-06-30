@@ -1,4 +1,4 @@
-🍔 Bite-Swift | Full-Stack
+## Bite swift Food ordering website ## 
 
 A responsive food ordering web application with a Vanilla JS frontend and Node.js backend. The project includes user flows, admin panel, cart management, and a basic server setup.
 
