@@ -29,17 +29,5 @@ npm start
 cd Frontend 
 #open index.html in browser  and use live server 
 
-
-bite-swift/
-├── Frontend/
-│   ├── index.html, menu.html, Cart.html, admin.html
-│   ├── style.css, script.js, menu.js, checkout.js
-│   └── images/chefs/, models/
-└── Backend/
-    ├── server.js
-    └── package.json
-
-
-
-
-
+👤 Author 
+Mariam Malik 
