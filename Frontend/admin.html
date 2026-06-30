@@ -1,0 +1,31 @@
+<h2>Orders Panel</h2>
+
+<div id="orders"></div>
+
+<script>
+const token = localStorage.getItem("token");
+
+fetch("http://localhost:5000/orders", {
+  headers: {
+    "Authorization": token
+  }
+})
+.then(res => res.json())
+.then(data => {
+  let html = "";
+
+  data.forEach(o => {
+    html += `
+      <div style="border:1px solid black; margin:10px; padding:10px;">
+        <b>${o.product}</b><br>
+        ${o.name} - ${o.phone}<br>
+        ${o.address}<br>
+        Rs: ${o.price}
+      </div>
+    `;
+  });
+
+  document.getElementById("orders").innerHTML = html;
+});
+</script>
+<script src="script.js"></script>

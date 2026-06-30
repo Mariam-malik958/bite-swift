@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bite Swift Restaurant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->                         
+<div class="navbar">
+
+  <h2 class="logo">Bite Swift Restaurant</h2>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="chefs.html">Chefs</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+<li><a href="book.html">Book Table</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li><a href="Cart.html">Cart <span class="cart-count">0</span></a></li>
+
+
+  </ul>
+
+</div>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Welcome to Bite Swift</h1>
+    <a href="menu.html" class="btn">Explore Menu</a>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="box">🍽 Fine Dining</div>
+  <div class="box">🌆 Beautiful View</div>
+  <div class="box">🔥 BBQ Special</div>
+</section>
+
+<!-- OUR STORY -->
+<section class="home-story">
+  <div class="story-2-img fade-left"></div>
+
+  <!-- LEFT TEXT -->
+  <div class="story-text">
+    <h2>Our Story</h2>
+
+    <p>
+      Bite Swift Restaurant is one of Pakistan’s most iconic dining destinations,
+      offering a perfect blend of luxury, taste, and unforgettable views.
+      Our journey started with a vision to deliver premium quality food
+      with world-class hospitality.
+      <br><br>
+      We believe in fresh ingredients, traditional recipes, and modern
+      presentation that creates a unique dining experience for every guest.
+      Whether it's family gatherings or special occasions, Bite Swift always
+      delivers excellence in every bite.
+    </p>
+
+  </div>
+
+  <!-- RIGHT IMAGE -->
+  <div class="story-image">
+        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80">
+
+  </div>
+
+</section>
+
+<section class="story-2">
+
+  <!-- LEFT IMAGE -->
+  <div class="story-2-img">
+    <div class="story-2-img fade-left"></div>
+    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&q=80">
+  </div>
+
+  <!-- RIGHT TEXT -->
+  <div class="story-2-text">
+    <h2>Our Passion for Taste</h2>
+
+    <p>
+      At Bite Swift Restaurant, we believe that food is not just something you eat — it is a complete dining experience that connects people, culture, and emotions. Every dish we serve is carefully designed to deliver unforgettable taste, exceptional quality, and a true sense of luxury.
+
+Our expert chefs use the finest and freshest ingredients, combined with traditional Pakistani recipes and modern culinary techniques, to create flavors that leave a lasting impression on every guest.
+
+From smoky BBQ specialties to rich traditional biryani, refreshing beverages, and delicious desserts, every item on our menu is prepared with dedication, passion, and attention to detail.
+
+We are committed to providing not only great food but also a warm and welcoming environment where families, friends, and guests can come together, celebrate special moments, and create memories that last a lifetime.
+    </p>
+
+    <a href="menu.html" class="story-btn">Explore Menu</a>
+  </div>
+
+</section>
+
+    <!-- ===== SPECIAL OFFERS ===== -->
+     <div class="offer-craving-wrapper">
+     <div class="section offers">
+        <h2>🍽️ Special Offers</h2>
+        <div class="rotating-content" id="offers-slider">
+
+            <div class="item active">
+                <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&q=80" alt="Biryani">
+                <div class="item-text">
+                    <span class="dish-badge">30% OFF</span>
+                    <div class="dish-name">Chicken Biryani</div>
+                    <div class="dish-desc">Dum style basmati chawal, masaledaar murgh ke saath</div>
+                    <div class="dish-price">Rs. 350 <s style="font-size:0.85rem;opacity:0.6">Rs. 500</s></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80" alt="Karahi">
+                <div class="item-text">
+                    <span class="dish-badge">BUY 1 GET 1</span>
+                    <div class="dish-name">Mutton Karahi</div>
+                    <div class="dish-desc">Desi ghee mein paka hua khalis goat karahi</div>
+                    <div class="dish-price">Rs. 850</div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&q=80" alt="Paratha">
+                <div class="item-text">
+                    <span class="dish-badge">FREE DELIVERY</span>
+                    <div class="dish-name">Special Paratha Platter</div>
+                    <div class="dish-desc">Aloo, paneer aur lacha paratha — 3 in 1 combo</div>
+                    <div class="dish-price">Rs. 280</div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=400&q=80" alt="Nihari">
+                <div class="item-text">
+                    <span class="dish-badge">WEEKEND DEAL</span>
+                    <div class="dish-name">Beef Nihari</div>
+                    <div class="dish-desc">Raat bhar paka hua soft gosht, naan ke saath</div>
+                    <div class="dish-price">Rs. 420 <s style="font-size:0.85rem;opacity:0.6">Rs. 600</s></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="dots" id="offers-dots">
+            <div class="dot active" onclick="goTo('offers',0)"></div>
+            <div class="dot" onclick="goTo('offers',1)"></div>
+            <div class="dot" onclick="goTo('offers',2)"></div>
+            <div class="dot" onclick="goTo('offers',3)"></div>
+        </div>
+    </div>
+
+    <!-- ===== CRAVINGS ===== -->
+    <div class="section cravings">
+        <h2>😋 Cravings</h2>
+        <div class="rotating-content" id="cravings-slider">
+
+            <div class="item active">
+                <img src="https://images.unsplash.com/photo-1562802378-063ec186a863?w=400&q=80" alt="Burger">
+                <div class="item-text">
+                    <span class="dish-badge">TRENDING</span>
+                    <div class="dish-name">Smash Burger</div>
+                    <div class="dish-desc">Double patty, crispy edges, special sauce aur pickles</div>
+                    <div class="dish-price">Rs. 450</div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80" alt="Pizza">
+                <div class="item-text">
+                    <span class="dish-badge">MOST LOVED</span>
+                    <div class="dish-name">Desi Tikka Pizza</div>
+                    <div class="dish-desc">Tandoori chicken, shimla mirch, desi spices</div>
+                    <div class="dish-price">Rs. 680</div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=400&q=80" alt="Shake">
+                <div class="item-text">
+                    <span class="dish-badge">SUMMER SPECIAL</span>
+                    <div class="dish-name">Oreo Nutella Shake</div>
+                    <div class="dish-desc">Thick shake, whipped cream, chocolate drizzle</div>
+                    <div class="dish-price">Rs. 320</div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?w=400&q=80" alt="Shawarma">
+                <div class="item-text">
+                    <span class="dish-badge">FAN FAVOURITE</span>
+                    <div class="dish-name">Chicken Shawarma</div>
+                    <div class="dish-desc">Grilled murgh, garlic sauce, taza vegetables</div>
+                    <div class="dish-price">Rs. 280</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="dots" id="cravings-dots">
+            <div class="dot active" onclick="goTo('cravings',0)"></div>
+            <div class="dot" onclick="goTo('cravings',1)"></div>
+            <div class="dot" onclick="goTo('cravings',2)"></div>
+            <div class="dot" onclick="goTo('cravings',3)"></div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    // ===== SLIDER LOGIC =====
+    const sliders = {
+        offers: { current: 0, total: 4 },
+        cravings: { current: 0, total: 4 }
+    };
+
+    function goTo(name, index) {
+        const slider = document.getElementById(name + '-slider');
+        const dots = document.getElementById(name + '-dots');
+        const items = slider.querySelectorAll('.item');
+        const dotEls = dots.querySelectorAll('.dot');
+
+        items[sliders[name].current].classList.remove('active');
+        dotEls[sliders[name].current].classList.remove('active');
+
+        sliders[name].current = index;
+
+        items[index].classList.add('active');
+        dotEls[index].classList.add('active');
+    }
+
+    function autoSlide(name) {
+        setInterval(() => {
+            const next = (sliders[name].current + 1) % sliders[name].total;
+            goTo(name, next);
+        }, 3500);
+    }
+
+    autoSlide('offers');
+    setTimeout(() => autoSlide('cravings'), 1750); // offset taake dono alag time par chalein
+
+    // ===== SCROLL ANIMATION =====
+    document.addEventListener('DOMContentLoaded', () => {
+        const targets = document.querySelectorAll('.offers, .cravings');
+        targets.forEach(el => el.classList.add('animate-ready'));
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        targets.forEach(el => observer.observe(el));
+    });
+
+</script>
+     </div>
+<!-- POPULAR DISHES SECTION -->
+<section class="popular-dishes">
+
+  <h2>🔥 Popular Dishes</h2>
+
+  <div class="dishes-grid">
+
+    <div class="dish-card">
+      <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80" alt="Chicken Samosa">
+      <h3>Chicken Samosa</h3>
+      <p>Rs. 850</p>
+<a href="#" class="add-to-cart" data-id="201" data-name="Chicken Samosa" data-price="850">
+  🛒 Add to Cart
+</a>
+    </div>
+
+    <div class="dish-card">
+      <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="Pizza">
+      <h3>Cheese Pizza</h3>
+      <p>Rs. 680</p>
+      <a href="#" class="add-to-cart" data-id="201" data-name="Pizza" data-price="680">
+  🛒 Add to Cart
+</a>
+    </div>
+
+    <div class="dish-card">
+      <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600&q=80" alt="Chicken Tikka">
+      <h3>Chicken Tikka</h3>
+      <p>Rs. 450</p>
+      <a href="#" class="add-to-cart" data-id="201" data-name="Chicken Tikka" data-price="450">
+  🛒 Add to Cart
+</a>
+    </div>
+
+    <div class="dish-card">
+      <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80" alt="sweet">
+      <h3>sweet</h3>
+      <p>Rs. 400</p>
+      <a href="#" class="add-to-cart" data-id="201" data-name="sweet" data-price="400">
+  🛒 Add to Cart
+</a>
+    </div>
+
+
+</button>
+    </div>
+
+  </div>
+
+</section>
+<!-- CUSTOMER REVIEWS SECTION -->
+<section class="customer-reviews">
+  <h2>⭐ What Our Customers Say</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="rating">⭐⭐⭐⭐⭐</div>
+      <p>"Best dining experience! The BBQ platter was finger-licking good. Highly recommended!"</p>
+      <div class="customer-name">— Ali Khan</div>
+    </div>
+    <div class="review-card">
+      <div class="rating">⭐⭐⭐⭐⭐</div>
+      <p>"Bite Swift's ambiance is top-notch and their Karahi is out of this world! A must-visit."</p>
+      <div class="customer-name">— Aisha Ahmed</div>
+    </div>
+    <div class="review-card">
+      <div class="rating">⭐⭐⭐⭐⭐</div>
+      <p>"Their desserts are a game-changer! The Gulab Jamun was heavenly 😍"</p>
+      <div class="customer-name">— Omar Farooq</div>
+    </div>
+  </div>
+</section>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!-- Footer -->
+<footer class="site-footer animated-footer">
+  <div class="footer-container">
+    <!-- Section 1: About -->
+    <div class="footer-section">
+      <h3>About Bite Swift</h3>
+      <p>Bite Swift Restaurant offers premium dining experience with authentic Pakistani cuisine and exceptional service.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <!-- Section 2: Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="book.html">Book Table</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Bite Swift Restaurant | Created by <b>Mariam Malik</b></p>
+  </div>
+</footer>
+
+

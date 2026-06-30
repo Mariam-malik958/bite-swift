@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bite Swift Restaurant - Menu</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+  <!-- Navbar -->
+  <div class="navbar">
+    <h2 class="logo">Bite Swift Restaurant</h2>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html" class="active">Menu</a></li>
+      <li><a href="chefs.html">Chefs</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="book.html">Book Table</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">🛒 Cart <span class="cart-count">0</span></a></li>
+    </ul>
+  </div>
+
+  <!-- Menu Hero -->
+  <section class="menu-hero">
+    <div class="hero-content">
+      <h1>Our Delicious Menu</h1>
+      <p>Explore our signature dishes made with love and finest ingredients</p>
+    </div>
+  </section>
+
+  <!-- Categories Buttons -->
+  <div class="menu-categories">
+    <button class="category-btn active" data-category="all">All</button>
+    <button class="category-btn" data-category="appetizers">Appetizers</button>
+    <button class="category-btn" data-category="main-course">Main Course</button>
+    <button class="category-btn" data-category="bbq">BBQ Special</button>
+    <button class="category-btn" data-category="desserts">Desserts</button>
+    <button class="category-btn" data-category="drinks">Drinks</button>
+  </div>
+
+  <!-- Menu Section -->
+  <section class="menu-page">
+    <div class="container">
+
+      <!-- APPETIZERS -->
+      <div class="menu-category appetizers">
+        <h2><i class="fas fa-pepper-hot"></i> Appetizers</h2>
+        <div class="menu-grid">
+
+          <div class="menu-item">
+            <div class="item-img">
+              <img src="https://images.pexels.com/photos/2955819/pexels-photo-2955819.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Crispy Chicken Samosa">
+            </div>
+            <div class="item-details">
+              <h3>Crispy Chicken Samosa</h3>
+              <p>Crispy pastry filled with spiced chicken and herbs</p>
+              <div class="price">Rs. 350</div>
+              <button class="add-to-cart"><i class="fas fa-plus"></i> Add to Cart</button>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <div class="item-img">
+              <img src="https://images.pexels.com/photos/674574/pexels-photo-674574.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Chicken Tikka Bites">
+            </div>
+            <div class="item-details">
+              <h3>Chicken Tikka Bites</h3>
+              <p>Marinated chicken chunks with mint sauce</p>
+              <div class="price">Rs. 450</div>
+              <button class="add-to-cart"><i class="fas fa-plus"></i> Add to Cart</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- MAIN COURSE -->
+      <div class="menu-category main-course">
+        <h2><i class="fas fa-drumstick-bite"></i> Main Course</h2>
+        <div class="menu-grid">
+
+          <div class="menu-item">
+            <div class="item-img">
+              <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Chicken Biryani">
+            </div>
+            <div class="item-details">
+              <h3>Chicken Biryani</h3>
+              <p>Aromatic basmati rice with tender chicken & spices</p>
+              <div class="price">Rs. 750</div>
+              <button class="add-to-cart"><i class="fas fa-plus"></i> Add to Cart</button>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <div class="item-img">
+              <img src="https://images.pexels.com/photos/6419733/pexels-photo-6419733.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mutton Handi">
+            </div>
+            <div class="item-details">
+              <h3>Mutton Handi</h3>
+              <p>Slow cooked mutton in traditional clay pot with rich gravy</p>
+              <div class="price">Rs. 1200</div>
+              <button class="add-to-cart"><i class="fas fa-plus"></i> Add to Cart</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- BBQ SPECIAL -->
+      <div class="menu-category bbq">
+        <h2><i class="fas fa-fire"></i> BBQ Special</h2>
+        <div class="menu-grid">
+
+          <div class="menu-item">
+            <div class="item-img">
+              <img src="https://images.pexels.com/photos/2233729/pexels-photo-2233729.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mutton Seekh Kebab">
+            </div>
+            <div class="item-details">
+              <h3>Mutton Seekh Kebab</h3>
+              <p>Juicy mutton kebabs grilled to perfection on charcoal</p>
+              <div class="price">Rs. 850</div>
+              <button class="add-to-cart"><i class="fas fa-plus"></i> Add to Cart</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DESSERTS -->
+      <div class="menu-category desserts">
+        <h2><i class="fas fa-ice-cream"></i> Desserts</h2>
+        <div class="menu-grid">
+
+          <div class="menu-item">
+            <div class="item-img">
+              <img src="https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Gulab Jamun">
+            </div>
+            <div class="item-details">
+              <h3>Gulab Jamun</h3>
+              <p>Soft sweet dumplings soaked in rose syrup</p>
+              <div class="price">Rs. 250</div>
+              <button class="add-to-cart"><i class="fas fa-plus"></i> Add to Cart</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DRINKS -->
+      <div class="menu-category drinks">
+        <h2><i class="fas fa-glass-cheers"></i> Drinks</h2>
+        <div class="menu-grid">
+
+          <div class="menu-item">
+            <div class="item-img">
+              <img src="https://images.pexels.com/photos/1292294/pexels-photo-1292294.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fresh Lime">
+            </div>
+            <div class="item-details">
+              <h3>Fresh Lime Soda</h3>
+              <p>Chilled fresh lime with mint & soda</p>
+              <div class="price">Rs. 180</div>
+              <button class="add-to-cart"><i class="fas fa-plus"></i> Add to Cart</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // Category filter
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const menuCategories = document.querySelectorAll('.menu-category');
+
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.dataset.category;
+
+        // Update active button
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Filter categories
+        menuCategories.forEach(cat => {
+          if (category === 'all' || cat.classList.contains(category)) {
+            cat.style.display = 'block';
+          } else {
+            cat.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
+<!-- Footer -->
+<footer class="site-footer animated-footer">
+  <div class="footer-container">
+    <!-- Section 1: About -->
+    <div class="footer-section">
+      <h3>About Bite Swift</h3>
+      <p>Bite Swift Restaurant offers premium dining experience with authentic Pakistani cuisine and exceptional service.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <!-- Section 2: Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="book.html">Book Table</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Bite Swift Restaurant | Created by <b>Mariam Malik</b></p>
+  </div>
+</footer>

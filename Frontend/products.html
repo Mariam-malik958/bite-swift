@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Products Admin</title>
+<style>
+body{background:#0f172a;color:white;font-family:Arial}
+input,button{padding:10px;margin:5px}
+.card{background:#111827;padding:10px;margin:10px;border-radius:10px}
+</style>
+</head>
+
+<body>
+
+<h1>🍔 Product Management</h1>
+
+<!-- ADD PRODUCT -->
+<div>
+  <input id="pname" placeholder="Name">
+  <input id="pdesc" placeholder="Desc">
+  <input id="pprice" placeholder="Price">
+  <input id="pimage" placeholder="Image URL">
+
+  <button onclick="addProduct()">➕ Save Product</button>
+</div>
+
+<!-- PRODUCT LIST -->
+<div id="list"></div>
+
+<script>
+
+async function loadProducts(){
+
+  const res = await fetch("http://localhost:5000/products");
+  const data = await res.json();
+
+  let box = document.getElementById("list");
+  box.innerHTML = "";
+
+  data.forEach(p => {
+    box.innerHTML += `
+      <div class="card">
+        <img src="${p.image}" width="100"><br>
+        <b>${p.name}</b><br>
+        ${p.desc}<br>
+        Rs ${p.price}<br>
+
+        <button onclick="deleteProduct('${p._id}')">🗑 Delete</button>
+        <button onclick="editProduct('${p._id}')">✏ Edit</button>
+      </div>
+    `;
+  });
+}
+
+/* ➕ ADD */
+async function addProduct(){
+
+  await fetch("http://localhost:5000/products",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      name:pname.value,
+      desc:pdesc.value,
+      price:pprice.value,
+      image:pimage.value
+    })
+  });
+
+  loadProducts();
+}
+
+/* 🗑 DELETE */
+async function deleteProduct(id){
+  await fetch(`http://localhost:5000/product/${id}`,{
+    method:"DELETE"
+  });
+  loadProducts();
+}
+
+/* ✏ EDIT */
+async function editProduct(id){
+
+  let name = prompt("New Name");
+  let price = prompt("New Price");
+
+  await fetch(`http://localhost:5000/product/${id}`,{
+    method:"PUT",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({name,price})
+  });
+
+  loadProducts();
+}
+
+loadProducts();
+
+</script>
+
+  <script src="script.js"></script>
+</body>
+</html>

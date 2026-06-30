@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart – Bite Swift Restaurant</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .cart-page-wrapper {
+      min-height: 100vh;
+      background: #0a0f1e;
+      padding: 30px 20px 60px;
+    }
+    .cart-page-wrapper h1 {
+      color: white;
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+    .cart-layout {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 24px;
+      align-items: start;
+    }
+    @media(max-width:768px) {
+      .cart-layout { grid-template-columns: 1fr; }
+    }
+    .cart-summary-box {
+      background: rgba(30,41,59,0.9);
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 24px;
+      position: sticky;
+      top: 20px;
+      color: white;
+    }
+    .cart-summary-box h3 {
+      margin: 0 0 20px;
+      font-size: 20px;
+      border-bottom: 1px solid #334155;
+      padding-bottom: 14px;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      color: #94a3b8;
+      font-size: 15px;
+    }
+    .summary-row.total-row {
+      border-top: 1px solid #334155;
+      padding-top: 14px;
+      margin-top: 6px;
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .summary-row.total-row span:last-child { color: #e11d48; }
+    .checkout-btn {
+      width: 100%;
+      padding: 14px;
+      margin-top: 16px;
+      background: linear-gradient(135deg, #e11d48, #be123c);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .checkout-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(225,29,72,0.4); }
+    .clear-btn {
+      width: 100%;
+      padding: 11px;
+      margin-top: 10px;
+      background: transparent;
+      color: #64748b;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .clear-btn:hover { border-color: #ef4444; color: #ef4444; }
+
+    /* Checkout Modal */
+    .checkout-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+    .checkout-modal-overlay.open { display: flex; }
+    .checkout-modal-box {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 1px solid #334155;
+      border-radius: 20px;
+      padding: 36px 32px;
+      width: 460px;
+      max-width: 95vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      color: white;
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: #334155;
+      border: none;
+      color: white;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-close:hover { background: #ef4444; }
+    .checkout-modal-box h2 {
+      margin: 0 0 8px;
+      font-size: 24px;
+    }
+    .checkout-modal-box p.sub {
+      color: #94a3b8;
+      font-size: 14px;
+      margin: 0 0 24px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 7px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(15,23,42,0.8);
+      border: 1.5px solid #334155;
+      border-radius: 10px;
+      color: white;
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.3s;
+      box-sizing: border-box;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: #e11d48; }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #475569; }
+    .form-group textarea { min-height: 80px; resize: vertical; }
+    .order-summary-in-modal {
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    .order-summary-in-modal .total-line {
+      border-top: 1px solid #334155;
+      padding-top: 10px;
+      margin-top: 10px;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .place-order-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #e11d48, #be123c);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 4px;
+    }
+    .place-order-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(225,29,72,0.4); }
+    .place-order-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+  <h2 class="logo">Bite Swift Restaurant</h2>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="chefs.html">Chefs</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="book.html">Book Table</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="Cart.html" class="active">🛒 Cart <span class="cart-count">0</span></a></li>
+  </ul>
+</div>
+
+<!-- Cart Page -->
+<div class="cart-page-wrapper">
+  <h1>🛒 Your Cart</h1>
+  <div class="cart-layout">
+    <!-- Cart Items -->
+    <div id="cartItems"></div>
+
+    <!-- Order Summary -->
+    <div class="cart-summary-box">
+      <h3>Order Summary</h3>
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span id="subtotal">Rs. 0</span>
+      </div>
+      <div class="summary-row">
+        <span>Delivery Fee</span>
+        <span>Rs. 150</span>
+      </div>
+      <div class="summary-row total-row">
+        <span>Total</span>
+        <span id="total">Rs. 0</span>
+      </div>
+      <button class="checkout-btn" id="checkoutBtn">
+        <i class="fas fa-lock"></i> Proceed to Checkout
+      </button>
+      <button class="clear-btn" id="clearCart">
+        <i class="fas fa-trash"></i> Clear Cart
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Checkout Modal -->
+<div class="checkout-modal-overlay" id="checkoutModal">
+  <div class="checkout-modal-box">
+    <button class="modal-close" id="modalCloseBtn">&times;</button>
+    <h2>Complete Order</h2>
+    <p class="sub">Enter your delivery details below</p>
+
+    <!-- Live order summary inside modal -->
+    <div class="order-summary-in-modal" id="modalOrderSummary"></div>
+
+    <form id="checkoutForm" novalidate>
+      <div class="form-group">
+        <label><i class="fas fa-user"></i> Full Name</label>
+        <input type="text" id="custName" placeholder="e.g. Mariam Malik" required>
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-phone"></i> Phone Number</label>
+        <input type="tel" id="custPhone" placeholder="e.g. 0300-1234567" required>
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-map-marker-alt"></i> Delivery Address</label>
+        <textarea id="custAddress" placeholder="Enter your full delivery address..." required></textarea>
+      </div>
+      <button type="submit" class="place-order-btn" id="placeOrderBtn">
+        <i class="fas fa-check-circle"></i> Place Order
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer animated-footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>About Bite Swift</h3>
+      <p>Bite Swift Restaurant offers premium dining experience with authentic Pakistani cuisine and exceptional service.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="book.html">Book Table</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Bite Swift Restaurant | Created by <b>Mariam Malik</b></p>
+  </div>
+</footer>
+
+<script>
+  // Inline checkout modal + order submission
+  document.addEventListener('DOMContentLoaded', function() {
+
+    // Show modal when checkout clicked
+    document.getElementById('checkoutBtn').addEventListener('click', function() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length === 0) {
+        alert('Your cart is empty. Please add items first.');
+        return;
+      }
+
+      // Build live summary
+      const subtotal = cart.reduce((s, item) => {
+        return s + (parseInt(item.price.toString().replace(/[^0-9]/g,'')) || 0) * item.quantity;
+      }, 0);
+      const delivery = 150;
+      const total = subtotal + delivery;
+
+      let summaryHtml = cart.map(item => {
+        const p = parseInt(item.price.toString().replace(/[^0-9]/g,'')) || 0;
+        return `<div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+          <span>${item.quantity}× ${item.name}</span>
+          <span>Rs. ${p * item.quantity}</span>
+        </div>`;
+      }).join('');
+      summaryHtml += `<div class="total-line"><span>Total</span><span style="color:#e11d48;">Rs. ${total}</span></div>`;
+      document.getElementById('modalOrderSummary').innerHTML = summaryHtml;
+
+      document.getElementById('checkoutModal').classList.add('open');
+    });
+
+    // Close modal
+    document.getElementById('modalCloseBtn').addEventListener('click', function() {
+      document.getElementById('checkoutModal').classList.remove('open');
+    });
+    document.getElementById('checkoutModal').addEventListener('click', function(e) {
+      if (e.target === this) this.classList.remove('open');
+    });
+
+    // Submit order
+    document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const name    = document.getElementById('custName').value.trim();
+      const phone   = document.getElementById('custPhone').value.trim();
+      const address = document.getElementById('custAddress').value.trim();
+
+      if (!name || !phone || !address) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const subtotal = cart.reduce((s, item) => {
+        return s + (parseInt(item.price.toString().replace(/[^0-9]/g,'')) || 0) * item.quantity;
+      }, 0);
+      const total = subtotal + 150;
+
+      const btn = document.getElementById('placeOrderBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Placing Order...';
+
+      try {
+        const res = await fetch('/order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, phone, address, items: cart, totalAmount: total })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          localStorage.removeItem('cart');
+          document.getElementById('checkoutModal').classList.remove('open');
+          document.getElementById('checkoutForm').reset();
+
+          // Show success popup
+          showSuccessPopup(name, total);
+
+          // Refresh cart display
+          if (typeof loadCartItems === 'function') loadCartItems();
+          if (typeof updateCartCount === 'function') updateCartCount();
+        } else {
+          alert('❌ Failed: ' + (data.message || 'Server error'));
+        }
+      } catch (err) {
+        alert('❌ Cannot connect to server. Make sure http://localhost:5000 is running.');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-check-circle"></i> Place Order';
+      }
+    });
+
+    function showSuccessPopup(name, total) {
+      const popup = document.createElement('div');
+      popup.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:99999;';
+      popup.innerHTML = `
+        <div style="background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid #10b981;
+             border-radius:20px;padding:40px;text-align:center;color:white;max-width:380px;width:90%;
+             animation:scaleIn .4s ease;">
+          <div style="font-size:70px;margin-bottom:16px;">🎉</div>
+          <h2 style="color:#10b981;margin:0 0 10px;">Order Placed!</h2>
+          <p style="color:#94a3b8;margin:0 0 6px;">Thank you, <strong style="color:white;">${name}</strong>!</p>
+          <p style="color:#94a3b8;margin:0 0 24px;">Total: <strong style="color:#e11d48;">Rs. ${total}</strong></p>
+          <p style="color:#64748b;font-size:13px;margin:0 0 28px;">Your order has been saved and the admin will process it shortly.</p>
+          <button onclick="window.location.href='index.html'"
+            style="background:linear-gradient(135deg,#10b981,#059669);color:white;border:none;
+            padding:13px 30px;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;">
+            Back to Home 🏠
+          </button>
+        </div>
+        <style>@keyframes scaleIn{from{transform:scale(0.8);opacity:0}to{transform:scale(1);opacity:1}}</style>
+      `;
+      document.body.appendChild(popup);
+    }
+  });
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
